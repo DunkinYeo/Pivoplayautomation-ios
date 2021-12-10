@@ -1,6 +1,9 @@
 package app.pivoplay.test;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -15,7 +18,7 @@ import java.net.URL;
 public abstract class BaseTest {
 
     private static AppiumDriverLocalService service;
-    public AppiumDriver<WebElement> driver;
+    public AndroidDriver<MobileElement> driver;
 
 
     @BeforeSuite(groups = {"abstract"})
@@ -45,7 +48,7 @@ public abstract class BaseTest {
 
 
         try {
-            driver = new AppiumDriver<WebElement>(new URL("http://0.0.0.0:4723/wd/hub"), cap);
+            driver = new AndroidDriver<MobileElement>(new URL("http://0.0.0.0:4723/wd/hub"), cap);
         } catch (Exception exp) {
             System.out.println(exp.getCause());
             System.out.println(exp.getMessage());

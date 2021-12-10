@@ -3,14 +3,14 @@
 
 <suite name="PivoPlus" verbose="1" >
     <parameter name="config-file" value="src/test/resources/config.properties" />
-    <test name ="ConnectPodTest" preserve-order="true">
+    <test name ="PanoramaTest" preserve-order="true">
         <groups>
             <run>
                 <include name="abstract"/>
             </run>
         </groups>
         <classes>
-            <class name="app.pivoplay.test.ConnectPodTest"/>
+            <class name="app.pivoplay.test.PanoramaTest"/>
         </classes>
     </test>
 </suite>
