@@ -3,14 +3,11 @@ package app.pivoplay.views;
 import app.pivoplay.library.TestLibrary;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 
-public class PanoramaView extends TestLibrary {
+public class NotificationView extends TestLibrary {
 
-    private final int SECOND60 =60;
+    private final int SECOND60 = 60;
 
-    private final String BTN_CAPTURE = "CAPTURE";
-    private final String ID_CAPTURE = "io.youvr.android.pivo:id/capture_btn";
     private final String BTN_IGNORE = "IGNORE"; //Ignore button on the notification for warning phone's position
     private final String ID_IGNORE = "io.youvr.android.pivo:id/btn_neg";
     private final String BTN_OK = "OK";
@@ -21,9 +18,6 @@ public class PanoramaView extends TestLibrary {
 
         MobileElement element = null;
         switch (elementText) {
-            case BTN_CAPTURE:
-                element = findElementByIdWithWait(driver, SECOND60, ID_CAPTURE);
-                break;
             case BTN_IGNORE:
                 element = findElementByIdWithWait(driver, SECOND60, ID_IGNORE);
                 break;

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="PivoPlus" verbose="1" >
+<suite name="Pivo Play Test" verbose="1" >
     <parameter name="config-file" value="src/test/resources/config.properties" />
-    <test name ="PanoramaTest" preserve-order="true">
+   <test name="RegressionTest">
         <groups>
             <run>
                 <include name="abstract"/>
+                <include name="Regression"/>
             </run>
         </groups>
-        <classes>
-            <class name="app.pivoplay.test.PanoramaTest"/>
-        </classes>
+       <classes>
+           <class name="app.pivoplay.test.PlayModeTest"/>
+       </classes>
     </test>
 </suite>

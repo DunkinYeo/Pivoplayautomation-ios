@@ -7,10 +7,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,7 +27,7 @@ public abstract class BaseTest {
 
     }
 
-    @BeforeTest(groups = {"abstract"})
+    @BeforeMethod(groups = {"abstract"})
     public void setUp() throws Exception {
         System.out.println("BeforeTest...");
         DesiredCapabilities cap = new DesiredCapabilities();
@@ -57,17 +54,16 @@ public abstract class BaseTest {
     }
 
 
-    @AfterTest(groups = { "abstract" })
+    @AfterMethod(groups = { "abstract" })
     public void tearDown() {
         System.out.println("AfterTest...");
-
         if (driver != null) {
             driver.quit();
         }
     }
 
     @AfterSuite(groups = { "abstract" })
-    public void globalTearDown () {
+    public void globalTearDown() {
         System.out.println("AfterSuite...");
 
         if (service != null) {
