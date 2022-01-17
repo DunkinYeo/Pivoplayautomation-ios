@@ -4,6 +4,7 @@ import app.pivoplay.library.TestLibrary;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 
 public class PanoramaView extends TestLibrary {
 
@@ -17,9 +18,9 @@ public class PanoramaView extends TestLibrary {
     private final String ID_OK = "io.youvr.android.pivo:id/btn_pos";
 
 
-    public MobileElement getViewElement(MobileDriver<MobileElement> driver, String elementText) {
+    public AndroidElement getViewElement(MobileDriver<AndroidElement> driver, String elementText) {
 
-        MobileElement element = null;
+        AndroidElement element = null;
         switch (elementText) {
             case BTN_CAPTURE:
                 element = findElementByIdWithWait(driver, SECOND60, ID_CAPTURE);

@@ -1,7 +1,8 @@
 package app.pivoplay.test;
 
-import io.appium.java_client.MobileElement;
+import app.pivoplay.utils.DesiredCaps;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
@@ -11,9 +12,9 @@ import java.net.URL;
 
 public abstract class BaseTest {
 
+    public AndroidDriver<AndroidElement> driver;
     private static AppiumDriverLocalService service;
-    public AndroidDriver<MobileElement> driver;
-
+    private final DesiredCaps desiredCaps = new DesiredCaps();
 
     @BeforeSuite(groups = {"abstract"})
     public void globalSetup() throws IOException {
@@ -21,28 +22,16 @@ public abstract class BaseTest {
 
         service = AppiumDriverLocalService.buildDefaultService();
         service.start();
-
     }
 
     @BeforeMethod(groups = {"abstract"})
-    public void setUp() throws Exception {
+    @Parameters({"deviceName", "platformVersion", "udid"})
+    public void setUp(String deviceName, String platformVersion, String udid) throws IOException {
         System.out.println("BeforeTest...");
-        DesiredCapabilities cap = new DesiredCapabilities();
-
-        //Real device
-        //S21 5G KR model
-        cap.setCapability("deviceName", "Galaxy S21 5G");
-        cap.setCapability("udid","R3CR104QQDV");
-        cap.setCapability("platformName","Android");
-        cap.setCapability("platformVersion","11");
-        cap.setCapability("appPackage","io.youvr.android.pivo");
-        cap.setCapability("appActivity","io.youvr.android.pivo.activity.ScanActivity");
-        cap.setCapability("noReset", "true");
-        cap.setCapability("fullReset", "false");
-
+        DesiredCapabilities caps = desiredCaps.getDesiredCapabilities(deviceName, platformVersion, udid);
 
         try {
-            driver = new AndroidDriver<MobileElement>(new URL("http://0.0.0.0:4723/wd/hub"), cap);
+            driver = new AndroidDriver<io.appium.java_client.android.AndroidElement>(getServiceUrl(), caps);
         } catch (Exception exp) {
             System.out.println(exp.getCause());
             System.out.println(exp.getMessage());

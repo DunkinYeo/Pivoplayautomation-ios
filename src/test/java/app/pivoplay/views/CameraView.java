@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.WebElement;
 
 public class CameraView extends TestLibrary {
@@ -18,9 +19,9 @@ public class CameraView extends TestLibrary {
     private final String ID_CAMERA = "io.youvr.android.pivo:id/record_btn";
 
 
-    public MobileElement getViewElement(MobileDriver<MobileElement> driver, String elementText) {
+    public AndroidElement getViewElement(MobileDriver<AndroidElement> driver, String elementText) {
 
-        MobileElement element = null;
+        AndroidElement element = null;
         switch (elementText) {
             case BTN_CAPTURE:
                 element = findElementByIdWithWait(driver, SECOND60, ID_CAPTURE);

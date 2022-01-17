@@ -3,6 +3,7 @@ package app.pivoplay.views;
 import app.pivoplay.library.TestLibrary;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidElement;
 
 public class NotificationView extends TestLibrary {
 
@@ -14,9 +15,9 @@ public class NotificationView extends TestLibrary {
     private final String ID_OK = "io.youvr.android.pivo:id/btn_pos";
 
 
-    public MobileElement getViewElement(MobileDriver<MobileElement> driver, String elementText) {
+    public AndroidElement getViewElement(MobileDriver<AndroidElement> driver, String elementText) {
 
-        MobileElement element = null;
+        AndroidElement element = null;
         switch (elementText) {
             case BTN_IGNORE:
                 element = findElementByIdWithWait(driver, SECOND60, ID_IGNORE);

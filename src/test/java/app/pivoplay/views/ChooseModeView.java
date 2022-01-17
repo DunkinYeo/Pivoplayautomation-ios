@@ -4,6 +4,7 @@ import app.pivoplay.library.TestLibrary;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 
 public class ChooseModeView extends TestLibrary {
 
@@ -29,9 +30,9 @@ public class ChooseModeView extends TestLibrary {
     private final String BTN_TINY_PLANET = "TINY_PLANET";
     private final String XPATH_TINY_PLANET = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/androidx.recyclerview.widget.RecyclerView/android.widget.RelativeLayout[11]/android.widget.Button";
 
-    public MobileElement getViewElement(MobileDriver<MobileElement> driver, String elementText) {
+    public AndroidElement getViewElement(MobileDriver<AndroidElement> driver, String elementText) {
 
-        MobileElement element = null;
+        AndroidElement element = null;
         switch (elementText) {
             case TXT_TITLE:
                 element = findElementByIdWithWait(driver, SECOND60, ID_TITLE);

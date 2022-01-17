@@ -19,37 +19,37 @@ public class TestLibrary {
     /*
     * Method for finding element with WebDriverWait
     */
-    public MobileElement findElementByIdWithWait(WebDriver driver, int second, String id) {
+    public AndroidElement findElementByIdWithWait(WebDriver driver, int second, String id) {
         AndroidElement element = (AndroidElement) new WebDriverWait(driver, second)
                 .until(ExpectedConditions.elementToBeClickable(MobileBy.id(id)));
         return element;
     }
-    public MobileElement findElementByAccessibilityWithWait(WebDriver driver, int second, String ac_id) {
+    public AndroidElement findElementByAccessibilityWithWait(WebDriver driver, int second, String ac_id) {
         AndroidElement element = (AndroidElement) new WebDriverWait(driver, second)
                 .until(ExpectedConditions.visibilityOfElementLocated(MobileBy.AccessibilityId(ac_id)));
         return element;
     }
-    public MobileElement findElementByXpathWithWait(WebDriver driver, int second, String xpath) {
+    public AndroidElement findElementByXpathWithWait(WebDriver driver, int second, String xpath) {
         AndroidElement element = (AndroidElement) new WebDriverWait(driver, second)
                 .until(ExpectedConditions.visibilityOfElementLocated(MobileBy.xpath(xpath)));
         return element;
     }
 
-    public MobileElement findElementByNameWithWait(WebDriver driver, int second, String name) {
-        MobileElement element = (MobileElement) new WebDriverWait(driver, second)
+    public AndroidElement findElementByNameWithWait(WebDriver driver, int second, String name) {
+        AndroidElement element = (AndroidElement) new WebDriverWait(driver, second)
                 .until(ExpectedConditions.visibilityOfElementLocated(MobileBy.name(name)));
         return element;
     }
 
-    public MobileElement findElementByClassNameWithWait(WebDriver driver, int second, String className) {
-        MobileElement element = (MobileElement) new WebDriverWait(driver, second)
+    public AndroidElement findElementByClassNameWithWait(WebDriver driver, int second, String className) {
+        AndroidElement element = (AndroidElement) new WebDriverWait(driver, second)
                 .until(ExpectedConditions.visibilityOfElementLocated(MobileBy.className(className)));
         return element;
     }
 
     /*Initialize the app connect with pod etc.*/
 
-    public void connectPod(MobileDriver<MobileElement> driver) {
+    public void connectPod(MobileDriver<AndroidElement> driver) {
         ConnectPodView connectPodView = new ConnectPodView();
         MobileElement connect = connectPodView.getViewElement(driver, "CONNECT");
         assertTrue("Can not find connect button", connect != null);
@@ -67,12 +67,12 @@ public class TestLibrary {
         assertTrue("Cannot find capture button", capture != null);
     }
 
-    public void swipeToRight(AndroidDriver<MobileElement> driver) {
+    public void swipeToRight(AndroidDriver<AndroidElement> driver) {
         TouchAction touchAction = new TouchAction(driver);
         touchAction.press(PointOption.point(200, 1000)).waitAction().moveTo(PointOption.point(700, 1000)).release().perform();
     }
 
-    public void swipeToLeft(AndroidDriver<MobileElement> driver) {
+    public void swipeToLeft(AndroidDriver<AndroidElement> driver) {
         TouchAction touchAction = new TouchAction(driver);
         touchAction.press(PointOption.point(700, 1000)).waitAction().moveTo(PointOption.point(200, 1000)).release().perform();
     }
@@ -80,11 +80,11 @@ public class TestLibrary {
     /*
    Library for calling global setting view which is using same ID
     */
-    public void setAuto(AndroidDriver<MobileElement> driver) {
+    public void setAuto(AndroidDriver<AndroidElement> driver) {
 
         swipeToLeft(driver); // Open setting view
         GlobalSettingView globalSettingView = new GlobalSettingView();
-        MobileElement auto = globalSettingView.getViewElement(driver, "AUTO");
+        AndroidElement auto = globalSettingView.getViewElement(driver, "AUTO");
         auto.click();
 
         TouchAction touchAction = new TouchAction(driver);
@@ -96,23 +96,23 @@ public class TestLibrary {
         confirm.click();
         */
     }
-    public void ignoreMessage(AndroidDriver<MobileElement> driver) {
+    public void ignoreMessage(AndroidDriver<AndroidElement> driver) {
         NotificationView notificationView = new NotificationView();
-        MobileElement ignore = notificationView.getViewElement(driver, "IGNORE");
+        AndroidElement ignore = notificationView.getViewElement(driver, "IGNORE");
         assertTrue("Can not find ignore button", ignore != null);
         ignore.click();
     }
 
-    public void verifyMakingMagic(AndroidDriver<MobileElement> driver) {
+    public void verifyMakingMagic(AndroidDriver<AndroidElement> driver) {
         PreviewView previewView = new PreviewView();
-        MobileElement back = previewView.getViewElement(driver, "BACK");
+        AndroidElement back = previewView.getViewElement(driver, "BACK");
         assertTrue("Can not find back button", back != null);
         back.click();
     }
 
-    public void chooseMode(AndroidDriver<MobileElement> driver, String elementText) {
+    public void chooseMode(AndroidDriver<AndroidElement> driver, String elementText) {
         ChooseModeView chooseModeView = new ChooseModeView();
-        MobileElement mode = null;
+        AndroidElement mode = null;
         switch (elementText){
             case "PANORAMA":
                 mode = chooseModeView.getViewElement(driver, "PANORAMA");
@@ -138,20 +138,20 @@ public class TestLibrary {
         mode.click();
 
         CameraView cameraView = new CameraView();
-        MobileElement capture = cameraView.getViewElement(driver, "CAPTURE");
+        AndroidElement capture = cameraView.getViewElement(driver, "CAPTURE");
         assertTrue("Cannot find capture button", capture != null);
     }
 
-    public void startCapture(AndroidDriver<MobileElement> driver){
+    public void startCapture(AndroidDriver<AndroidElement> driver){
         CameraView cameraView = new CameraView();
-        MobileElement capture = cameraView.getViewElement(driver, "CAPTURE");
+        AndroidElement capture = cameraView.getViewElement(driver, "CAPTURE");
         capture.click();
     }
 
 
-    public void FlashMode(AndroidDriver<MobileElement> driver) {
+    public void FlashMode(AndroidDriver<AndroidElement> driver) {
         ChooseModeView chooseModeView = new ChooseModeView();
-        MobileElement flash = chooseModeView.getViewElement(driver,"FLASH");
+        AndroidElement flash = chooseModeView.getViewElement(driver,"FLASH");
         assertTrue("can not find flash", flash != null);
         flash.click();
 

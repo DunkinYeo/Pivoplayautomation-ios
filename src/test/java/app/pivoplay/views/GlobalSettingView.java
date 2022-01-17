@@ -3,6 +3,7 @@ package app.pivoplay.views;
 import app.pivoplay.library.TestLibrary;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidElement;
 
 public class GlobalSettingView extends TestLibrary {
 
@@ -15,9 +16,9 @@ public class GlobalSettingView extends TestLibrary {
     private final String BTN_MANUAL = "MANUAL";
     private final String ID_MANUAL = "io.youvr.android.pivo:id/btn_manual";
 
-    public MobileElement getViewElement(MobileDriver<MobileElement> driver, String elementText) {
+    public AndroidElement getViewElement(MobileDriver<AndroidElement> driver, String elementText) {
 
-        MobileElement element = null;
+        AndroidElement element = null;
         switch (elementText) {
             case BTN_CONFIRM:
                 element = findElementByXpathWithWait(driver,SECOND60,ID_CONFIRM);

@@ -2,8 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Pivo Play Test" verbose="1" >
-    <parameter name="config-file" value="src/test/resources/config.properties" />
    <test name="RegressionTest">
+       <parameter name="deviceName" value="3i-A4-2021-366"/>
+       <parameter name="udid" value="R3CRB0D0Z9H"/>
+       <parameter name="platformVersion" value="11"/>
         <groups>
             <run>
                 <include name="abstract"/>

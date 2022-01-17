@@ -2,8 +2,6 @@ package app.pivoplay.views;
 
 import app.pivoplay.library.TestLibrary;
 import io.appium.java_client.MobileDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
 public class ConnectPodView extends TestLibrary {
@@ -14,9 +12,9 @@ public class ConnectPodView extends TestLibrary {
     private final String BTN_GALLERY = "GALLERY";
     private final String ID_GALLERY = "io.youvr.android.pivo:id/gallery_btn";
 
-    public MobileElement getViewElement(MobileDriver<MobileElement> driver, String elementText) {
+    public AndroidElement getViewElement(MobileDriver<AndroidElement> driver, String elementText) {
 
-        MobileElement element = null;
+        AndroidElement element = null;
         switch (elementText) {
             case BTN_CONNECT:
                 element = findElementByIdWithWait(driver, SECOND60, ID_CONNECT);

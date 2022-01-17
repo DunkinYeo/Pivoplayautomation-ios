@@ -1,10 +1,8 @@
 package app.pivoplay.test;
 
-import app.pivoplay.library.TestLibrary;
 import app.pivoplay.views.ConnectPodView;
 import app.pivoplay.views.GalleryView;
 import io.appium.java_client.MobileElement;
-import org.testng.annotations.Test;
 
 
 import static org.junit.Assert.assertTrue;
