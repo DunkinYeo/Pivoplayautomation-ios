@@ -1,8 +1,8 @@
 package app.pivoplay.test;
 
 import app.pivoplay.utils.DesiredCaps;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
@@ -12,11 +12,11 @@ import java.net.URL;
 
 public abstract class BaseTest {
 
-    public AndroidDriver<AndroidElement> driver;
+    public IOSDriver<IOSElement> driver;
     private static AppiumDriverLocalService service;
     private final DesiredCaps desiredCaps = new DesiredCaps();
 
-    @BeforeSuite(groups = {"abstract"})
+    @BeforeSuite
     public void globalSetup() throws IOException {
         System.out.println("Starting BeforeSuite...");
 
@@ -24,14 +24,14 @@ public abstract class BaseTest {
         service.start();
     }
 
-    @BeforeMethod(groups = {"abstract"})
+    @BeforeMethod
     @Parameters({"deviceName", "platformVersion", "udid"})
     public void setUp(String deviceName, String platformVersion, String udid) throws IOException {
         System.out.println("BeforeTest...");
         DesiredCapabilities caps = desiredCaps.getDesiredCapabilities(deviceName, platformVersion, udid);
 
         try {
-            driver = new AndroidDriver<io.appium.java_client.android.AndroidElement>(getServiceUrl(), caps);
+            driver = new IOSDriver<IOSElement>(getServiceUrl(), caps);
         } catch (Exception exp) {
             System.out.println(exp.getCause());
             System.out.println(exp.getMessage());
@@ -40,7 +40,7 @@ public abstract class BaseTest {
     }
 
 
-    @AfterMethod(groups = { "abstract" })
+    @AfterMethod
     public void tearDown() {
         System.out.println("AfterTest...");
         if (driver != null) {
@@ -48,7 +48,7 @@ public abstract class BaseTest {
         }
     }
 
-    @AfterSuite(groups = { "abstract" })
+    @AfterSuite
     public void globalTearDown() {
         System.out.println("AfterSuite...");
 

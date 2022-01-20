@@ -2,16 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Pivo Play Test" verbose="1" >
-   <test name="RegressionTest">
-       <parameter name="deviceName" value="3i-A4-2021-366"/>
-       <parameter name="udid" value="R3CRB0D0Z9H"/>
-       <parameter name="platformVersion" value="11"/>
-        <groups>
-            <run>
-                <include name="abstract"/>
-                <include name="Regression"/>
-            </run>
-        </groups>
+   <test name="*">
+       <parameter name="deviceName" value="George's iPhone"/>
+       <parameter name="udid" value="00008030-000D14300E98402E"/>
+       <parameter name="platformVersion" value="15.1"/>
+
        <classes>
            <class name="app.pivoplay.test.PlayModeTest"/>
        </classes>

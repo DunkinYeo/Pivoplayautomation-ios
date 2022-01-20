@@ -3,6 +3,7 @@ package app.pivoplay.views;
 import app.pivoplay.library.TestLibrary;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.ios.IOSElement;
 
 public class GalleryView extends TestLibrary {
 
@@ -13,9 +14,9 @@ public class GalleryView extends TestLibrary {
     private final String BTN_DELETE = "DELETE";
     private final String ID_DELETE = "io.youvr.android.pivo:id/action_delete";
 
-    public AndroidElement getViewElement(MobileDriver<AndroidElement> driver, String elementText) {
+    public IOSElement getViewElement(MobileDriver<IOSElement> driver, String elementText) {
 
-        AndroidElement element = null;
+        IOSElement element = null;
         switch (elementText) {
             case BTN_BACK:
                 element = findElementByXpathWithWait(driver,SECOND60,ID_BACK);

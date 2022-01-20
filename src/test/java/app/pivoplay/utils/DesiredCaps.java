@@ -7,14 +7,14 @@ public class DesiredCaps {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        capabilities.setCapability("deviceName", deviceName);
-        capabilities.setCapability("udid",udid);
+        capabilities.setCapability("xcodeOrgId", "4JQH63J424");
+        capabilities.setCapability("xcodeSigninId","iPhone Developer");
+        capabilities.setCapability("automationName","XCUITest");
+        capabilities.setCapability("platformName","iOS");
         capabilities.setCapability("platformVersion",platformVersion);
-        capabilities.setCapability("platformName","Android");
-        capabilities.setCapability("appPackage","io.youvr.android.pivo");
-        capabilities.setCapability("appActivity","io.youvr.android.pivo.activity.ScanActivity");
-        capabilities.setCapability("noReset", "true");
-        capabilities.setCapability("fullReset", "false");
+        capabilities.setCapability("deviceName",deviceName);
+        capabilities.setCapability("bundleId","io.youvr.ios.pivo");
+        capabilities.setCapability("udid",udid);
 
         return capabilities;
     }

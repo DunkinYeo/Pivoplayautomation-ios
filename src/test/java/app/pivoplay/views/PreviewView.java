@@ -4,40 +4,51 @@ import app.pivoplay.library.TestLibrary;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.ios.IOSElement;
 
 public class PreviewView extends TestLibrary {
 
     private final int SECOND60 = 60;
 
     private final String BTN_BACK = "BACK";
-    private final String AD_BACk = "Navigate up";
+    private final String AI_BACK = "ic button back";
     private final String BTN_GIF = "GIF";
-    private final String ID_GIF = "io.youvr.android.pivo:id/action_giphy";
+    private final String AI_GIF = "ic button gif";
+    private final String BTN_EDIT = "EDIT";
+    private final String AI_EDIT = "ic button edit";
     private final String BTN_SHARE = "SHARE";
-    private final String ID_SHARE = "io.youvr.android.pivo:id/action_share";
+    private final String AI_SHARE = "ic button share";
     private final String BTN_EXPORT = "EXPORT";
-    private final String ID_EXPORT = "io.youvr.android.pivo:id/action_export";
+    private final String AI_EXPORT = "ic button file download";
     private final String BTN_DELETE = "DELETE";
-    private final String ID_DELETE = "io.youvr.android.pivo:id/action_delete";
+    private final String AI_DELETE = "ic button delete";
+    private final String BTN_DONE = "DONE";
+    private final String CI_DONE = "**/XCUIElementTypeStaticText[`label == \"Done\"`]";
 
-    public AndroidElement getViewElement(MobileDriver<AndroidElement> driver, String elementText) {
+    public IOSElement getViewElement(MobileDriver<IOSElement> driver, String elementText) {
 
-        AndroidElement element = null;
+        IOSElement element = null;
         switch (elementText) {
             case BTN_BACK:
-                element = findElementByAccessibilityWithWait(driver, SECOND60, AD_BACk);
+                element = findElementByAccessibilityWithWait(driver, SECOND60, AI_BACK);
                 break;
             case BTN_GIF:
-                element = findElementByIdWithWait(driver, SECOND60, ID_GIF);
+                element = findElementByAccessibilityWithWait(driver, SECOND60, AI_GIF);
+                break;
+            case BTN_EDIT:
+                element = findElementByAccessibilityWithWait(driver, SECOND60, AI_EDIT);
                 break;
             case BTN_SHARE:
-                element = findElementByIdWithWait(driver, SECOND60, ID_SHARE);
+                element = findElementByAccessibilityWithWait(driver, SECOND60, AI_SHARE);
                 break;
             case BTN_EXPORT:
-                element = findElementByIdWithWait(driver, SECOND60, ID_EXPORT);
+                element = findElementByAccessibilityWithWait(driver, SECOND60, AI_EXPORT);
                 break;
             case BTN_DELETE:
-                element = findElementByIdWithWait(driver, SECOND60, ID_DELETE);
+                element = findElementByAccessibilityWithWait(driver, SECOND60, AI_DELETE);
+                break;
+            case BTN_DONE:
+                element = findElementByClassChainIDWithWait(driver, SECOND60, CI_DONE);
                 break;
         }
         return element;

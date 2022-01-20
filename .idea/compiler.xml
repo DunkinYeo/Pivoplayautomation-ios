@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="pivoplay-automation-android" />
+        <module name="pivoplay-automation-ios" />
       </profile>
     </annotationProcessing>
   </component>

@@ -3,24 +3,25 @@ package app.pivoplay.views;
 import app.pivoplay.library.TestLibrary;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.ios.IOSElement;
 
 public class ConnectPodView extends TestLibrary {
 
     private final int SECOND60 = 60;
     private final String BTN_CONNECT = "CONNECT";
-    private final String ID_CONNECT = "io.youvr.android.pivo:id/connect_to_pivo_btn";
+    private final String CI_CONNECT = "**/XCUIElementTypeStaticText[`label == \"Connect\"`]";
     private final String BTN_GALLERY = "GALLERY";
-    private final String ID_GALLERY = "io.youvr.android.pivo:id/gallery_btn";
+    private final String CI_GALLERY = "**/XCUIElementTypeStaticText[`label == \"Gallery\"`]";
 
-    public AndroidElement getViewElement(MobileDriver<AndroidElement> driver, String elementText) {
+    public IOSElement getViewElement(MobileDriver<IOSElement> driver, String elementText) {
 
-        AndroidElement element = null;
+        IOSElement element = null;
         switch (elementText) {
             case BTN_CONNECT:
-                element = findElementByIdWithWait(driver, SECOND60, ID_CONNECT);
+                element = findElementByClassChainIDWithWait(driver, SECOND60, CI_CONNECT);
                 break;
             case BTN_GALLERY:
-                element = findElementByIdWithWait(driver, SECOND60, ID_GALLERY);
+                element = findElementByClassChainIDWithWait(driver, SECOND60, CI_GALLERY);
                 break;
         }
         return element;

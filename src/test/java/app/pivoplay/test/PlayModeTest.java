@@ -2,162 +2,197 @@ package app.pivoplay.test;
 
 import app.pivoplay.library.TestLibrary;
 
+import app.pivoplay.views.PreviewView;
+import app.pivoplay.views.playmodes.*;
+import io.appium.java_client.ios.IOSElement;
 import org.testng.annotations.Test;
 import static org.junit.Assert.*;
 
 public class PlayModeTest extends BaseTest {
 
-    @Test(groups = {"Regression"})
+    @Test
     public void PanoramaTest() {
 
         TestLibrary testLibrary = new TestLibrary();
 
         testLibrary.connectPod(driver); // connect to pod
 
-        testLibrary.swipeToRight(driver); //open choose mode view
+        testLibrary.openModeSelection(driver);
 
         testLibrary.chooseMode(driver,"PANORAMA");
 
-        testLibrary.startCapture(driver); //Start capture
-        testLibrary.ignoreMessage(driver); //ignore message
+        PanoramaView panoramaView = new PanoramaView();
+        IOSElement capture = panoramaView.getViewElement(driver,"CAPTURE");
+        capture.click(); //start capture
 
-        try {
-            testLibrary.startCapture(driver);
-        }catch (Exception exp){
-            fail("Can not start capture after ignore the message");
-            exp.getCause();
-            exp.getMessage();
-        }
+        testLibrary.ignoreMessage(driver); //ignore message
 
         testLibrary.verifyMakingMagic(driver); // check capturing is finished
     }
 
-    @Test(groups = {"Regression"})
+    @Test
     public void ManymeTest() {
 
         TestLibrary testLibrary = new TestLibrary();
 
         testLibrary.connectPod(driver); // connect to pod
 
-        testLibrary.swipeToRight(driver); //open choose mode view
+        testLibrary.openModeSelection(driver); //open choose mode view
 
         testLibrary.chooseMode(driver,"MANY_ME");
 
-        testLibrary.startCapture(driver); //Start capture
-        testLibrary.ignoreMessage(driver); //ignore message
+        ManyMeView manyMeView = new ManyMeView();
+        IOSElement capture = manyMeView.getViewElement(driver,"CAPTURE");
+        capture.click(); //start capture
 
-        try {
-            testLibrary.startCapture(driver);
-        }catch (Exception exp){
-            fail("Can not start capture after ignore the message");
-            exp.getCause();
-            exp.getMessage();
-        }
+        testLibrary.ignoreMessage(driver); //ignore message
 
         testLibrary.verifyMakingMagic(driver); // check capturing is finished
     }
 
-    @Test(groups = {"Regression"})
+    @Test
     public void FlashTest() {
 
         TestLibrary testLibrary = new TestLibrary();
 
         testLibrary.connectPod(driver); // connect to pod
 
-        testLibrary.swipeToRight(driver); //open choose mode view
+        testLibrary.openModeSelection(driver); //open choose mode view
 
         testLibrary.chooseMode(driver,"FLASH");
 
         testLibrary.setAuto(driver); //Set as Auto
 
-        testLibrary.startCapture(driver); //Start capture
+        FlashView flashView = new FlashView();
+        IOSElement capture = flashView.getViewElement(driver,"CAPTURE");
+        capture.click(); //start capture
 
         testLibrary.verifyMakingMagic(driver); // check capturing is finished
 
     }
-    @Test(groups = {"Regression"})
+    @Test
     public void DoubleTakeTest(){
         TestLibrary testLibrary = new TestLibrary();
 
         testLibrary.connectPod(driver); // connect to pod
 
-        testLibrary.swipeToRight(driver); //open choose mode view
+        testLibrary.openModeSelection(driver); //open choose mode view
 
         testLibrary.chooseMode(driver,"DOUBLE_TAKE");
 
         testLibrary.setAuto(driver); //Set as Auto
 
-        testLibrary.startCapture(driver); //Start capture
+        DoubleTakeView doubleTakeView = new DoubleTakeView();
+        IOSElement capture = doubleTakeView.getViewElement(driver,"CAPTURE");
+        capture.click(); //start capture
 
         testLibrary.verifyMakingMagic(driver); // check capturing is finished
 
     }
 
-    @Test(groups = {"Regression"})
+    @Test
     public void VSTest(){
         TestLibrary testLibrary = new TestLibrary();
 
         testLibrary.connectPod(driver); // connect to pod
 
-        testLibrary.swipeToRight(driver); //open choose mode view
+        testLibrary.openModeSelection(driver); //open choose mode view
 
         testLibrary.chooseMode(driver,"VS");
 
         testLibrary.setAuto(driver); //Set as Auto
 
-        testLibrary.startCapture(driver); //Start capture
+        VersusView versusView = new VersusView();
+        IOSElement capture = versusView.getViewElement(driver,"CAPTURE");
+        capture.click(); //start capture
 
         testLibrary.verifyMakingMagic(driver); // check capturing is finished
     }
 
-    @Test(groups = {"Regression"})
+    @Test
     public void fiftyFiftyTest(){
         TestLibrary testLibrary = new TestLibrary();
 
         testLibrary.connectPod(driver); // connect to pod
 
-        testLibrary.swipeToRight(driver); //open choose mode view
+        testLibrary.openModeSelection(driver); //open choose mode view
 
         testLibrary.chooseMode(driver,"50/50");
 
         testLibrary.setAuto(driver); //Set as Auto
 
-        testLibrary.startCapture(driver); //Start capture
-        testLibrary.ignoreMessage(driver); //ignore message
+        FiftyFiftyView fiftyFiftyView = new FiftyFiftyView();
+        IOSElement capture = fiftyFiftyView.getViewElement(driver,"CAPTURE");
+        capture.click(); //start capture
 
-        try {
-            testLibrary.startCapture(driver);
-        }catch (Exception exp){
-            fail("Can not start capture after ignore the message");
-            exp.getCause();
-            exp.getMessage();
-        }
+        testLibrary.ignoreMessage(driver); //ignore message
 
         testLibrary.verifyMakingMagic(driver); // check capturing is finished
     }
 
-    @Test(groups = {"Regression"})
+    //@Test
+    public void timeLapseTest(){
+        TestLibrary testLibrary = new TestLibrary();
+
+        testLibrary.connectPod(driver); // connect to pod
+
+        testLibrary.openModeSelection(driver); //open choose mode view
+
+        testLibrary.chooseMode(driver,"TIME_LAPSE");
+
+        testLibrary.setAuto(driver); //Set as Auto
+
+        TimeLapseView timeLapseView = new TimeLapseView();
+        IOSElement capture = timeLapseView.getViewElement(driver,"CAPTURE");
+        capture.click(); //start capture
+
+        testLibrary.ignoreMessage(driver); //ignore message
+
+        testLibrary.verifyMakingMagic(driver); // check capturing is finished
+
+    }
+
+    @Test
     public void tinyPlanetTest(){
         TestLibrary testLibrary = new TestLibrary();
 
         testLibrary.connectPod(driver); // connect to pod
 
-        testLibrary.swipeToRight(driver); //open choose mode view
+        testLibrary.openModeSelection(driver); //open choose mode view
 
         testLibrary.chooseMode(driver,"TINY_PLANET");
 
-        testLibrary.startCapture(driver); //Start capture
+        TinyPlanetView tinyPlanetView = new TinyPlanetView();
+        IOSElement capture = tinyPlanetView.getViewElement(driver,"CAPTURE");
+        assertTrue("Cannot find capture button", capture.isDisplayed());
+        capture.click(); //start capture
+
         testLibrary.ignoreMessage(driver); //ignore message
 
-        try {
-            testLibrary.startCapture(driver);
-        }catch (Exception exp){
-            fail("Can not start capture after ignore the message");
-            exp.getCause();
-            exp.getMessage();
-        }
-
         testLibrary.verifyMakingMagic(driver); // check capturing is finished
+    }
+
+    @Test
+    public void manyMeVideoTest(){
+        TestLibrary testLibrary = new TestLibrary();
+
+        testLibrary.connectPod(driver); // connect to pod
+
+        testLibrary.openModeSelection(driver); //open choose mode view
+
+        testLibrary.chooseMode(driver,"MANY_ME_VIDEO");
+
+        ManyMeVideoView manyMeVideoView = new ManyMeVideoView();
+        IOSElement capture = manyMeVideoView.getViewElement(driver,"CAPTURE");
+        capture.click(); //start capture
+
+        testLibrary.ignoreMessage(driver); //ignore message + start capture automatically
+
+        PreviewView previewView = new PreviewView();
+        IOSElement done = previewView.getViewElement(driver,"DONE");
+        assertTrue("Cannot find done button", done.isDisplayed());
+        done.click(); //finish
+
     }
 
 }

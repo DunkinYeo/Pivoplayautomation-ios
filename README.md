@@ -1,4 +1,4 @@
-# PivoPlay-Automation-Android
+# PivoPlay-Automation-iOS
 
 
 
